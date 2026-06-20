@@ -39,7 +39,7 @@ export function Navbar() {
                 <Link href="/dashboard" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                   Dashboard
                 </Link>
-                <UserButton afterSignOutUrl="/" />
+                <UserButton />
               </>
             ) : (
               <SignInButton mode="modal">

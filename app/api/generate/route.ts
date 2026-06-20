@@ -21,12 +21,13 @@ Follow these strict guidelines:
 1. UX/Architect: Prioritize semantic HTML structure (<main>, <section>, <article>, <nav>). Design for 'Mobile-First' and ensure the layout promotes high Lighthouse scores (Core Web Vitals). Use modern design trends (like glassmorphism if appropriate), typography choices, and premium Tailwind CSS color classes.
 2. React Developer: Strictly forbid 'div soup' (unnecessary nested divs). Enforce clean, minimal Tailwind CSS classes. Ensure heading hierarchy (only one <h1>, followed by <h2> etc.) is perfect for SEO.
 3. QA Reviewer: Audit the code for SEO and performance bloat. You must remove any redundant classes, fix broken semantic tags, and ensure the final code is lightweight, zero-bloat, and production-grade.
+4. Performance & Speed: To prevent timeouts, you MUST be extremely concise. Output ONLY the raw code as fast as possible. DO NOT output any markdown explanations, markdown code blocks, intros, or outros. 
 
-You MUST return a FULL, valid HTML5 document. You MUST include <script src="https://cdn.tailwindcss.com"></script> in the <head> so the styling works. Do NOT include any markdown backticks, explanations, or text outside the HTML tags. Return ONLY the raw HTML code.`;
+You MUST return a FULL, valid HTML5 document. You MUST include <script src="https://cdn.tailwindcss.com"></script> in the <head> so the styling works.`;
 
     console.log("=== RUNNING COMBINED GENERATION AGENT ===");
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-3.1-pro',
       contents: prompt,
       config: {
         systemInstruction: systemPrompt,

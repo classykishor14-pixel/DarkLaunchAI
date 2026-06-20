@@ -15,6 +15,7 @@ export async function POST(request: Request) {
     // Step 1: Architect Agent
     const architectSystemPrompt = `You are a world-class UI/UX Designer.
 Your job is to take a user's raw idea and create a highly detailed, component-by-component design spec.
+Prioritize semantic HTML structure (<main>, <section>, <article>, <nav>). Design for 'Mobile-First' and ensure the layout promotes high Lighthouse scores (Core Web Vitals).
 Include detailed layout instructions, spacing, modern design trends (like glassmorphism if appropriate), typography choices, and the exact Tailwind CSS color classes to use.
 Do NOT write code. Write a design specification.`;
 
@@ -34,6 +35,7 @@ Do NOT write code. Write a design specification.`;
     // Step 2: Developer Agent
     const developerSystemPrompt = `You are an Expert Frontend React Developer.
 Your task is to take the provided design specification and write the complete, single-file HTML/React code using Tailwind CSS based ONLY on that spec.
+Strictly forbid 'div soup' (unnecessary nested divs). Enforce clean, minimal Tailwind CSS classes. Ensure heading hierarchy (only one <h1>, followed by <h2> etc.) is perfect for SEO.
 You MUST return a FULL, valid HTML5 document. You MUST include <script src="https://cdn.tailwindcss.com"></script> in the <head> so the styling works. Do NOT include any markdown backticks, explanations, or text outside the HTML tags. Return ONLY the raw HTML code.`;
 
     console.log("=== RUNNING DEVELOPER AGENT ===");
@@ -52,7 +54,8 @@ You MUST return a FULL, valid HTML5 document. You MUST include <script src="http
     // Step 3: QA Reviewer Agent (Self-Healing Engine)
     const qaSystemPrompt = `You are a strict QA/Code Reviewer.
 Your task is to take the provided HTML/React code and check for any unclosed HTML/React tags, broken Tailwind classes, or formatting issues.
-If you find any bugs, fix them immediately. If the code is already perfect, leave it as is.
+Audit the code for SEO and performance bloat. You must remove any redundant classes, fix broken semantic tags, and ensure the final code is lightweight and production-grade.
+If you find any bugs or bloat, fix them immediately. If the code is already perfect, leave it as is.
 Output ONLY the clean, final, production-ready code without any explanation or markdown code blocks.`;
 
     console.log("=== RUNNING QA REVIEWER AGENT ===");

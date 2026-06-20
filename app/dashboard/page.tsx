@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { Sparkles, Calendar, Code, ExternalLink } from 'lucide-react';
 import { TestEmailButton } from '@/components/TestEmailButton';
+import { CodeActions } from '@/components/CodeActions';
 
 export const dynamic = 'force-dynamic';
 
@@ -59,10 +60,7 @@ export default async function DashboardPage() {
                     <Calendar className="w-4 h-4" />
                     <span>{new Date(gen.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                   </div>
-                  <button className="w-full py-3 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium flex items-center justify-center gap-2 transition-all">
-                    <ExternalLink className="w-4 h-4" />
-                    View Code
-                  </button>
+                  <CodeActions code={gen.generated_code} projectId={gen.id} />
                 </div>
               </div>
             ))}

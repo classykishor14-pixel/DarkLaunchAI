@@ -27,7 +27,7 @@ You MUST return a FULL, valid HTML5 document. You MUST include <script src="http
 
     console.log("=== RUNNING COMBINED GENERATION AGENT ===");
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-pro-latest',
+      model: 'gemini-1.5-pro',
       contents: prompt,
       config: {
         systemInstruction: systemPrompt,

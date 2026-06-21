@@ -83,7 +83,7 @@ export function PreviewWindow({ code, isGenerating, error }: PreviewWindowProps)
               srcDoc={code}
               title="Generated Preview"
               className="w-full min-h-[700px] bg-white border-none rounded-b-xl"
-              sandbox="allow-scripts"
+              sandbox="allow-scripts allow-same-origin"
             />
           ) : (
             <div className="flex flex-col items-center justify-center text-white/50">

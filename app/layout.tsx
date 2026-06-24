@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import { PostHogProvider } from '@/components/PostHogProvider';
+import Script from "next/script";
+import DashboardLayout from "@/components/DashboardLayout";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +16,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "DarkLaunch AI",
-  description: "AI Website Generation",
+  title: "Darklaunch AI Dashboard",
+  description: "Control Plane for Darklaunch AI",
 };
 
 export default function RootLayout({
@@ -28,13 +35,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
     >
+      <head>
+        <Script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" strategy="beforeInteractive" />
+      </head>
       <body className="bg-transparent text-white antialiased">
         <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
           <PostHogProvider>
-            <Navbar />
-            {children}
+            <DashboardLayout>
+              {children}
+            </DashboardLayout>
           </PostHogProvider>
         </ClerkProvider>
       </body>

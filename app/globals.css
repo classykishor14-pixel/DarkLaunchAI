@@ -6,12 +6,25 @@
 
 @theme inline {
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Inter', ui-sans-serif, system-ui;
   --font-mono: var(--font-geist-mono);
   
-  --color-neon-cyan: #00f0ff;
-  --color-neon-purple: #b026ff;
+  --color-oled: #000000;
+  --color-charcoal: #0A0A0A;
+  --color-panel: #121214;
+  --color-line: #333333;
+  --color-cyan: #00D9FF;
+
+  --shadow-glow: 0 0 0 1px rgba(0,217,255,0.18), 0 18px 60px rgba(0,217,255,0.10);
+  --shadow-soft: 0 20px 80px rgba(0,0,0,0.55);
 }
+
+* { scrollbar-width: thin; scrollbar-color: #333333 #0A0A0A; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: #0A0A0A; }
+*::-webkit-scrollbar-thumb { background: #333333; border-radius: 999px; border: 3px solid #0A0A0A; }
+
+html { background: #000000; }
 
 body {
   color: var(--foreground);
@@ -24,6 +37,35 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-neon-purple);
-  color: #fff;
+  background-color: var(--color-cyan);
+  color: #000;
 }
+
+.noise:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.65'/%3E%3C/svg%3E");
+  z-index: 60;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(18,18,20,.82), rgba(10,10,10,.72));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.sidebar-collapsed #sidebar { width: 88px; }
+.sidebar-collapsed .sidebar-label,
+.sidebar-collapsed .sidebar-meta,
+.sidebar-collapsed .brand-text,
+.sidebar-collapsed .collapse-copy { opacity: 0; width: 0; overflow: hidden; white-space: nowrap; }
+.sidebar-collapsed #main-area { margin-left: 88px; }
+.sidebar-collapsed .nav-item { justify-content: center; }
+.command-open #command-modal { opacity: 1; pointer-events: auto; }
+.command-open #command-panel { transform: translateY(0) scale(1); opacity: 1; }
+.metric-line { background: linear-gradient(90deg, rgba(0,217,255,.85), rgba(0,217,255,.04)); }
+@keyframes pulseDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.8); opacity: .25; } }
+.live-dot:after { content:""; position:absolute; inset:0; border-radius:999px; background:#00D9FF; animation:pulseDot 1.8s ease-in-out infinite; }

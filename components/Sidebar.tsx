@@ -24,21 +24,21 @@ export default function Sidebar({ onToggle }: SidebarProps) {
       </div>
 
       <nav className="flex-1 space-y-1 px-4 py-4">
+        <Link href="#" className="nav-item flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-medium text-zinc-400 transition hover:border-line hover:bg-panel hover:text-white">
+          <iconify-icon icon="ph:folders-thin" className="text-[22px]"></iconify-icon>
+          <span className="sidebar-label transition-all duration-300">My Projects</span>
+        </Link>
         <Link href="/" className="nav-item flex items-center gap-3 rounded-xl border border-cyan/25 bg-cyan/[0.08] px-3 py-3 text-sm font-medium text-white shadow-glow transition">
-          <iconify-icon icon="ph:squares-four-thin" className="text-[22px] text-cyan"></iconify-icon>
-          <span className="sidebar-label transition-all duration-300">Overview</span>
+          <iconify-icon icon="ph:sparkle-thin" className="text-[22px] text-cyan"></iconify-icon>
+          <span className="sidebar-label transition-all duration-300">AI Generation</span>
         </Link>
         <Link href="#" className="nav-item flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-medium text-zinc-400 transition hover:border-line hover:bg-panel hover:text-white">
-          <iconify-icon icon="ph:rocket-launch-thin" className="text-[22px]"></iconify-icon>
-          <span className="sidebar-label transition-all duration-300">Deployments</span>
+          <iconify-icon icon="ph:squares-four-thin" className="text-[22px]"></iconify-icon>
+          <span className="sidebar-label transition-all duration-300">Component Library</span>
         </Link>
         <Link href="#" className="nav-item flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-medium text-zinc-400 transition hover:border-line hover:bg-panel hover:text-white">
-          <iconify-icon icon="ph:brain-thin" className="text-[22px]"></iconify-icon>
-          <span className="sidebar-label transition-all duration-300">AI Models</span>
-        </Link>
-        <Link href="#" className="nav-item flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-medium text-zinc-400 transition hover:border-line hover:bg-panel hover:text-white">
-          <iconify-icon icon="ph:key-thin" className="text-[22px]"></iconify-icon>
-          <span className="sidebar-label transition-all duration-300">API Keys</span>
+          <iconify-icon icon="ph:export-thin" className="text-[22px]"></iconify-icon>
+          <span className="sidebar-label transition-all duration-300">Export Code</span>
         </Link>
         <Link href="#" className="nav-item flex items-center gap-3 rounded-xl border border-transparent px-3 py-3 text-sm font-medium text-zinc-400 transition hover:border-line hover:bg-panel hover:text-white">
           <iconify-icon icon="ph:gear-six-thin" className="text-[22px]"></iconify-icon>
